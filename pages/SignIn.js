@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { Center, Container, NativeBaseProvider, Text, Input, Button, Icon } from 'native-base'
 import { MaterialIcons } from '@native-base/icons';
 import auth from '@react-native-firebase/auth';
-import { Alert } from 'react-native';
+import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+    webClientId: '853590535141-qahddqaao0ds02g74jn1p9g01883mrfn.apps.googleusercontent.com',
+});
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -10,10 +14,24 @@ export default function SignIn() {
 
     const [show, setShow] = React.useState(false);
 
+    const onGoogleButtonPress = async () => {
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+        // Sign-in the user with the credential
+        auth().signInWithCredential(googleCredential).then((res) => {
+            console.log(res)
+        });
+
+    }
+
     const login = async () => {
-        auth().signInWithEmailAndPassword(email,password)
-        .then((res)=>{console.log(res)})
-        .catch((err)=>{console.log(err)})
+        auth().signInWithEmailAndPassword(email, password)
+            .then((res) => { console.log(res) })
+            .catch((err) => { console.log(err) })
     }
 
     return (
@@ -29,6 +47,12 @@ export default function SignIn() {
                     <Button size="sm" colorScheme="green" pl="10" pr="10" mt="10" ml="30%" onPress={login}>
                         Sign In
                     </Button>
+                    <GoogleSigninButton
+                        style={{ width: 192, height: 60, marginLeft: 60 }}
+                        size={GoogleSigninButton.Size.Wide}
+                        color={GoogleSigninButton.Color.Dark}
+                        onPress={onGoogleButtonPress}
+                    />;
                 </Container>
             </Center>
         </NativeBaseProvider>

@@ -1201,7 +1201,7 @@
     "node-forge" "^1.2.1"
     "nullthrows" "^1.1.1"
 
-"@expo/config-plugins@^4.0.14", "@expo/config-plugins@^4.1.5", "@expo/config-plugins@~4.1.4", "@expo/config-plugins@4.1.5":
+"@expo/config-plugins@^4.0.14", "@expo/config-plugins@^4.1.0", "@expo/config-plugins@^4.1.5", "@expo/config-plugins@~4.1.4", "@expo/config-plugins@4.1.5":
   "integrity" "sha512-RVvU40RtZt12HavuDAe+LDIq9lHj7sheOfMEHdmpJ/uTA8pgvkbc56XF6JHQD+yRr6+uhhb+JnAasGq49dsQbw=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.1.5.tgz"
   "version" "4.1.5"
@@ -2433,6 +2433,11 @@
   "integrity" "sha512-bHjZW3CCj0CNPUm0NaZB1jNRVhUydvBRGej/40mgXf/iiSmooFqgk9DbQq6HZrEJ+eo8NHoQMH38qJ/LIBz2rw=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-15.2.0.tgz"
   "version" "15.2.0"
+
+"@react-native-google-signin/google-signin@^8.0.0":
+  "integrity" "sha512-GV0EGXUfiqk9Kav74zOq4ww0rAhMUlwmIGEf94X2ptnxfKu9TufeTig1zuDQGasgFlziWju/Ya2WeC+7TYSbxw=="
+  "resolved" "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-8.0.0.tgz"
+  "version" "8.0.0"
 
 "@react-native/assets@1.0.0":
   "integrity" "sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ=="
