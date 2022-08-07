@@ -3,12 +3,13 @@ import { Center, Container, NativeBaseProvider, Text, Input, Button, Icon } from
 import { MaterialIcons } from '@native-base/icons';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import { TouchableOpacity } from 'react-native';
 
 GoogleSignin.configure({
     webClientId: '853590535141-qahddqaao0ds02g74jn1p9g01883mrfn.apps.googleusercontent.com',
 });
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -30,7 +31,10 @@ export default function SignIn() {
 
     const login = async () => {
         auth().signInWithEmailAndPassword(email, password)
-            .then((res) => { console.log(res) })
+            .then((res) => {
+                console.log(res);
+                navigation.navigate('AddData')
+            })
             .catch((err) => { console.log(err) })
     }
 
@@ -54,6 +58,8 @@ export default function SignIn() {
                         onPress={onGoogleButtonPress}
                     />;
                 </Container>
+
+                <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }}><Text>Click To SignUp</Text></TouchableOpacity>
             </Center>
         </NativeBaseProvider>
     )

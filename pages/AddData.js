@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Center, Container, NativeBaseProvider, Text, Input, Button, Icon } from 'native-base'
 import firestore from '@react-native-firebase/firestore';
 
-export default function AddData() {
+export default function AddData({navigation}) {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [age, setAge] = useState('');
@@ -54,7 +54,7 @@ export default function AddData() {
         <NativeBaseProvider>
             <Center>
                 <Container>
-                    <Text fontSize="3xl" bold underline mt="35%" color="rose.800" ml="24%">Add Student</Text>
+                    <Text fontSize="3xl" bold underline mt="15%" color="rose.800" ml="24%">Add Student</Text>
                     <Input variant="rounded" value={name} onChangeText={txt => setName(txt)} placeholder="Name" mt="20" mb="5%" />
                     <Input variant="rounded" value={age} onChangeText={txt => setAge(txt)} placeholder="Age" mb="5%" />
                     <Input variant="rounded" value={address} onChangeText={txt => setAddress(txt)} placeholder="Address" mb="5%" />
@@ -63,11 +63,8 @@ export default function AddData() {
                     <Button size="sm" colorScheme="green" pl="10" pr="10" mt="10" ml="30%" onPress={saveStudent}>
                         Add Student
                     </Button>
-                    <Button size="sm" colorScheme="red" pl="10" pr="10" mt="5" ml="30%" onPress={deleteStudent}>
-                        Remove Student
-                    </Button>
-                    <Button size="sm" colorScheme="yellow" pl="10" pr="10" mt="5" ml="30%" onPress={updateStudent}>
-                        Update Student
+                    <Button size="sm" colorScheme="red" pl="10" pr="10" mt="5" ml="30%" onPress={()=>{navigation.navigate('LoadAll')}}>
+                        View All Data
                     </Button>
                 </Container>
             </Center>
