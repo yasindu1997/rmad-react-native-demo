@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Center, Container, NativeBaseProvider, Text, Input, Button, Icon } from 'native-base'
 import firestore from '@react-native-firebase/firestore';
 
-export default function AddData({navigation}) {
+export default function AddData({ navigation }) {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [age, setAge] = useState('');
@@ -50,6 +50,15 @@ export default function AddData({navigation}) {
             });
     }
 
+    const getAllFetchData = () => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .catch((err) => {
+                console.error(err)
+            })
+    }
+
     return (
         <NativeBaseProvider>
             <Center>
@@ -63,8 +72,11 @@ export default function AddData({navigation}) {
                     <Button size="sm" colorScheme="green" pl="10" pr="10" mt="10" ml="30%" onPress={saveStudent}>
                         Add Student
                     </Button>
-                    <Button size="sm" colorScheme="red" pl="10" pr="10" mt="5" ml="30%" onPress={()=>{navigation.navigate('LoadAll')}}>
+                    <Button size="sm" colorScheme="red" pl="10" pr="10" mt="5" ml="30%" onPress={() => { navigation.navigate('LoadAll') }}>
                         View All Data
+                    </Button>
+                    <Button size="sm" colorScheme="red" pl="10" pr="10" mt="5" ml="30%" onPress={getAllFetchData}>
+                        View Fetch Data
                     </Button>
                 </Container>
             </Center>
