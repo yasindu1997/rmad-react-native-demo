@@ -7,6 +7,7 @@ import LoadAll from './pages/LoadAll'
 import Upload from './pages/Upload'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import EditDelete from './pages/EditDelete'
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="AddData" component={AddData} />
         <Stack.Screen name="LoadAll" component={LoadAll} />
         <Stack.Screen name="Upload" component={Upload} />
+        <Stack.Screen name="EditDelete" component={EditDelete} />
       </Stack.Navigator>
     </NavigationContainer>
   )
