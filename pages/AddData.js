@@ -9,19 +9,6 @@ export default function AddData() {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-    useEffect(() => {
-        const subscriber = firestore()
-            .collection('students')
-            .doc('JdUy4QRW0RLKk3NuKpAt')
-            .onSnapshot(documentSnapshot => {
-                setAddress(documentSnapshot.data().address);
-                console.log('User data: ', documentSnapshot.data());
-            });
-
-        // Stop listening for updates when no longer required
-        return () => subscriber();
-    });
-
     const saveStudent = async () => {
         await firestore()
             .collection('students')

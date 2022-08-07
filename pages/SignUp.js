@@ -4,7 +4,7 @@ import { MaterialIcons } from '@native-base/icons';
 import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [username, setUserName] = useState('');
@@ -27,6 +27,7 @@ export default function SignUp() {
                 })
                 .then(() => {
                     Alert.alert('User account created & signed in!');
+                    navigation.navigate('SignIn')
                 })
                 .catch(error => {
                     if (error.code === 'auth/email-already-in-use') {
